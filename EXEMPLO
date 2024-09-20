@@ -1,0 +1,47 @@
+create database DML;
+
+create table produtos(
+produto_id int auto_increment PRIMARY KEY,
+nome varchar(50),
+preco decimal(10,2),
+estoque int
+);
+
+CREATE TABLE vendas (
+    vendas_id INT AUTO_INCREMENT PRIMARY KEY,
+    produto_id INT,
+    quantidade INT,
+    data_venda DATE,
+    FOREIGN KEY (produto_id) REFERENCES produtos(produto_id)
+);
+
+insert into produtos(nome, preco, estoque)
+values("notebook dell" ,7000.00 ,35),
+	  ("Notebook Lenovo" ,5000.00 ,20);
+      
+														select * from produtos;
+
+insert into vendas(produto_id, quantidade, data_venda)
+values(3,1, "2024-10-13");
+	  
+														select * from vendas;
+
+update produtos
+set preco = 6500.00
+where produto_id = 1;
+
+update vendas
+set quantidade = 7
+where vendas_id = 1;
+
+delete from produtos
+where produto_id = 2;
+
+delete from vendas
+where vendas_id = 1;
+
+select nome, estoque from produtos;
+select quantidade, data_venda from vendas;
+
+select * from vendas
+where vendas_id = 2;
