@@ -1,0 +1,67 @@
+
+#ATIVIDADE 1
+create database BANCO_EMPRESA3;
+
+create table departamento(
+dp_cod int PRIMARY KEY,
+dp_nome varchar(50)
+);
+
+create table dependente(
+dep_cod int,
+fun_cod int,
+dp_nome varchar(50),
+foreign key(fun_cod) references funcionarios(fun_cod)
+);
+
+create table funcionarios(
+fun_cod int PRIMARY KEY,
+dp_cod int,
+nome varchar(50),
+nasc date,
+salario decimal (10,2),
+foreign key(dp_cod) references departamento(dp_cod)
+);
+
+insert into departamento(dp_cod, dp_nome)
+values(1, "RH"),
+	  (2, "TI"),
+      (3, "POLICIAL"),
+      (4, "MUNICIPAL"),
+      (5, "CURSO"),
+      (6, "FINANCEIRO"),
+      (7, "ESPORTE"),
+      (8, "EDUCAÇÂO"),
+      (9, "SUSTENTABILIDADE"),
+      (10, "AMBIENTAL");
+
+INSERT INTO dependente (dep_cod, fun_cod, dp_nome)
+VALUES
+(1, 101, 'Ana Maria'),
+(2, 102, 'João Pedro'),
+(3, 103, 'Mariana Silva'),
+(4, 104, 'Lucas Pereira'),
+(5, 105, 'Gabriel Souza'),
+(6, 106, 'Fernanda Lima'),
+(7, 107, 'Carla Oliveira'),
+(8, 108, 'Ricardo Santos'),
+(9, 109, 'Isabela Costa'),
+(10, 110, 'Paulo Henrique');
+
+INSERT INTO funcionarios (fun_cod, dp_cod, nome, nasc, salario)
+VALUES
+(101, 1, 'Carlos Silva', '1985-07-15', 4500.00),
+(102, 2, 'Maria Souza', '1990-03-22', 5200.00),
+(103, 3, 'João Pereira', '1988-11-10', 4700.00),
+(104, 1, 'Ana Costa', '1979-12-05', 6000.00),
+(105, 4, 'Pedro Oliveira', '1995-05-30', 3800.00),
+(106, 2, 'Juliana Mendes', '1983-08-25', 5400.00),
+(107, 3, 'Rafael Lima', '1992-02-18', 4600.00),
+(108, 4, 'Fernanda Martins', '1991-09-13', 5000.00),
+(109, 1, 'Bruno Rocha', '1987-06-07', 4300.00),
+(110, 2, 'Patrícia Santos', '1984-01-19', 5800.00);
+
+
+select * from departamento;
+select * from dependente;
+select * from funcionarios;
